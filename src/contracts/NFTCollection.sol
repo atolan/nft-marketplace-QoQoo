@@ -18,7 +18,9 @@ contract NFTCollection is ERC721, ERC721Enumerable {
     super._beforeTokenTransfer(from, to, tokenId);
   }
 
-
+  function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable) returns (bool) {
+    return super.supportsInterface(interfaceId);
+  }
 
   function tokenURI(uint256 tokenId) public override view returns (string memory) {
     require(_exists(tokenId), 'ERC721Metadata: URI query for nonexistent token');
